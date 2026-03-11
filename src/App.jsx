@@ -72,7 +72,9 @@ function App() {
 
   useEffect(() => {
     const makeMergedSvg = async () => {
-      const urls = runeParts.map((value) => `/runes/${value}.png`);
+      const urls = runeParts.map(
+        (value) => new URL(`./runes/${value}.png`, import.meta.url).href,
+      );
       if (!urls.length) {
         setMergedSvg(null);
         return;
